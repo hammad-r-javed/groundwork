@@ -1,5 +1,5 @@
 # groundwork
-Simple project initialisation tool, using project templates
+Simple project initialisation tool, using project templates.
 
 # Installation
 1. Pull the repo down somewhere
@@ -18,5 +18,49 @@ The template script (in this case, `python-basic`) will always be passed the pat
 
 That's it! All you need to do now is fill out the script which will do all the hard work!
 
+## Template Example - Elm + Python Flask Proj
+**Template folder structure**
+```
+templates/elm-flask/
+├── elm-flask.sh
+└── files
+    ├── build.sh
+    ├── clean.sh
+    ├── client
+    │   ├── elm.json
+    │   └── src
+    │       ├── elm
+    │       │   ├── Main.elm
+    │       │   └── PageStyle.elm
+    │       └── html
+    │           ├── 404.html
+    │           └── main.html
+    ├── create_py_venv.sh
+    ├── README.md
+    ├── run.sh
+    ├── server.py
+```
+
+**`elm-flask.sh` script**
+```bash
+LOG_SUFFIX="[elm-flask] "
+
+if [ $# -ne 1 ]; then
+    echo "$LOG_SUFFIX No project directory passed to script!"
+    echo ""
+    exit
+fi
+
+echo "$LOG_SUFFIX Running template"
+echo "$LOG_SUFFIX Copying Files"
+
+cp -R $GROUNDWORK_TEMPLATES/elm-flask/files/* $1/
+cp $GROUNDWORK_TEMPLATES/elm-flask/files/.gitignore $1/
+
+echo "$LOG_SUFFIX Template finished running"
+```
+
+This is just a super simple script that copies everything in the template's `files/` sub-directory, into project directory that was passed to the script.
+
 # TODO
-- [ ] Support the passing of configuration parameters into templates
+- [ ] Support the passing of configuration arguments into templates
