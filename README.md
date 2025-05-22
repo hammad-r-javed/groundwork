@@ -64,3 +64,4 @@ This is just a super simple script that copies everything in the template's `fil
 
 # TODO
 - [ ] Support the passing of configuration arguments into templates
+- [ ] Add installation script that adds `GROUNDWORK_TEMPLATES` to common dotfiles
